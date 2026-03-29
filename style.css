@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Aqui modifiquei o corpo do html (o gradiente foi feito aqui) */
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at 20% 30%, #1a0033, transparent),
+                radial-gradient(circle at 80% 70%, #2b0a3d, transparent),
+                radial-gradient(circle at 50% 50%, #000000, #0a0a2a);
+    overflow: hidden;
+    cursor: none;
+}
+
+.trail {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffffff;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  opacity: 0.8;
+  z-index: 999999; 
+}
+
+/* Aqui mudei os inputs, mas só mexi na borda */
+input {
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+}
+
+/* Nesse coloquei uma transição nessas duas tags que faz que quando o mouse fica encima do botão ele muda de cor */
+button {
+    padding: 5px 20px;
+    transition: ease-in-out 0.5s;
+    border: none;
+    border-radius: 5px;
+    
+}
+
+button:hover{
+    background-color: #89c05c;
+    border: 1px solid #648b43;
+}
+
+
+
+/* Esaa tag modifica a parte da "calculadora" */
+.cal {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    border-radius: 20px;
+    backdrop-filter: blur(5px);
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.7), rgba(119, 119, 223, 0.1));
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+/* Mudei a fonte da h1 */
+h1 {
+    font-family: Lucida Handwriting;
+}
+
+/* Deixei a parte onde a aparece as respostas mais organizada */
+.org {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.org div {
+    width: fit-content;
+    height: fit-content;
+    padding: 0 10px;
+    
+}
+
+
+
+/* Aqui para baixo começa a parte da animação das estrelas */
+
+.container {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    z-index: 0;
+}
+
+.icone{
+    width: 80px;
+    height: 80px; 
+    /* Define o tamanho da estrela. */
+    background-image: url("img/estrela.png");
+    background-size: contain;
+    /* Faz a imagem caber dentro do elemento sem cortar. */
+    background-position: center;
+    background-repeat: no-repeat;
+    /* Impede que a imagem se repita. */
+    animation: anima-estrela linear infinite;
+    animation-duration: calc(300s / var(--i));
+}
+
+/* Versão com um foguete no meio das estrelas, se tirar como comentário as partes do css e do html vai funcionar */
+.icone-foguete{
+    width: 80px;
+    height: 80px; 
+    background-image: url("img/foguete.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    animation: anima-foguete linear infinite;
+    animation-duration: calc(300s / var(--i));
+}
+
+@keyframes anima-estrela {
+    0% {
+        transform: translateY(100vh) scale(0) rotate(0deg);
+    }
+    100%{
+        transform: translateY(-10vh) scale(1) rotate(360deg);
+    }
+}
+
+/* Animação do foguete com a única diferença da parte de cima é que a imagem não fica girando */
+@keyframes anima-foguete {
+    0% {
+        transform: translateY(100vh) scale(0) rotate(0deg);
+    }
+    100%{
+        transform: translateY(-10vh) scale(1) rotate(0deg);
+    }
+}
